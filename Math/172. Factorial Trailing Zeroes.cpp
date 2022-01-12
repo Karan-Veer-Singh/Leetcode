@@ -3,12 +3,11 @@ public:
     int trailingZeroes(int n) 
     {
         int ans = 0;
-        int p = 5;
         
-        while( (n/p) > 0)
+        while(n)
         {
-            ans += (n/p);
-            p *= 5;
+            n /= 5;
+            ans += n;
         }
         
         return ans;
