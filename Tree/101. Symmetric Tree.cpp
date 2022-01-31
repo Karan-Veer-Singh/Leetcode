@@ -34,12 +34,8 @@ public:
             if(leftNode == NULL && rightNode == NULL)
                 continue;
             
-            if((leftNode == NULL && rightNode != NULL) || (rightNode == NULL && leftNode != NULL))
+            if(leftNode == NULL || rightNode == NULL || leftNode -> val != rightNode -> val)
                 return false;
-            
-            if(leftNode -> val != rightNode -> val)
-                return false;
-              
             
             q.push(leftNode -> left);   q.push(rightNode -> right);
             q.push(leftNode -> right);  q.push(rightNode -> left);
