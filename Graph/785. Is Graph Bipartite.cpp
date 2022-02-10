@@ -47,4 +47,48 @@ public:
     }
 };
 
+-------------------------------------------------------------------------------------
+// DFS
+
+class Solution 
+{
+    bool checkBipartite(int node, vector<int>&color, vector<vector<int>> graph)
+    {
+       if(color[node] == -1)
+           color[node] = 1;
+        
+        for(auto ngbr : graph[node])
+        {
+            if(color[ngbr] == -1)
+            {
+                color[ngbr] = 1-color[node];
+                if(checkBipartite(ngbr, color, graph) == false)
+                    return false;
+            }
+            else if(color[ngbr] == color[node])
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+public:
+    bool isBipartite(vector<vector<int>>& graph) 
+    {
+        int V = graph.size();
+        
+        vector<int> color(V, -1);
+        
+        for(int i = 0; i < V; i++)
+            if(color[i] == -1)
+                if(checkBipartite(i, color, graph) == false)
+                    return false;
+        
+        return true;
+    }
+};
+
+
 // https://leetcode.com/problems/is-graph-bipartite/submissions/
