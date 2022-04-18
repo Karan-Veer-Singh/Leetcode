@@ -11,27 +11,27 @@
  */
 class Solution {
 public:
-    int kthSmallest(TreeNode* root, int k) 
+    int kthSmallest(TreeNode* root, int k)
     {
         stack<TreeNode*> s;
         int c = 0;
 
-        while(true)
+        while (true)
         {
-            if(root != NULL)    
+            if (root != NULL)
             {
                 s.push(root);
                 root = root->left;
             }
             else
             {
-                if(s.empty())   break;
+                if (s.empty())   break;
 
                 root = s.top();
                 s.pop();
 
                 c++;
-                if(c == k)      return root->val;
+                if (c == k)      return root->val;
 
                 root = root->right;
             }
@@ -41,4 +41,4 @@ public:
     }
 };
 
-//	https://leetcode.com/problems/kth-smallest-element-in-a-bst/submissions/ 
+// https://leetcode.com/problems/kth-smallest-element-in-a-bst/
