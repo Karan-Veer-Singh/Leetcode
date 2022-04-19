@@ -9,23 +9,23 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution 
+class Solution
 {
 private:
     TreeNode *prev;
     TreeNode *first;
     TreeNode *middle;
     TreeNode *last;
-    
+
     void inorder(TreeNode *root)
     {
-        if(root == NULL)    return;
-        
+        if (root == NULL)    return;
+
         inorder(root->left);
-        
-        if(prev != NULL && (root->val < prev->val))
+
+        if (prev != NULL && (root->val < prev->val))
         {
-            if(first == NULL)
+            if (first == NULL)
             {
                 first = prev;
                 middle = root;
@@ -35,26 +35,26 @@ private:
                 last = root;
             }
         }
-        
+
         prev = root;
-        
+
         inorder(root->right);
     }
-    
+
 public:
-    void recoverTree(TreeNode* root) 
+    void recoverTree(TreeNode* root)
     {
         first = middle = last = NULL;
         prev = new TreeNode(INT_MIN);
-        
+
         inorder(root);
-        
-        if(first && last)
+
+        if (first && last)
             swap(first->val, last->val);
-        
-        else if(first && middle)
-            swap(first->val, middle->val);            
+
+        else if (first && middle)
+            swap(first->val, middle->val);
     }
 };
 
-// https://leetcode.com/problems/recover-binary-search-tree/submissions/
+// https://leetcode.com/problems/recover-binary-search-tree/
