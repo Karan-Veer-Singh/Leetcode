@@ -9,13 +9,13 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class BSTIterator 
+class BSTIterator
 {
     stack<TreeNode*> s;
-    
+
     void pushAll(TreeNode *root)
     {
-        while(root != NULL)
+        while (root != NULL)
         {
             s.push(root);
             root = root->left;
@@ -23,24 +23,24 @@ class BSTIterator
     }
 
 public:
-    BSTIterator(TreeNode* root) 
+    BSTIterator(TreeNode* root)
     {
         pushAll(root);
     }
-    
-    int next() 
+
+    int next()
     {
         TreeNode *temp = s.top();
         s.pop();
-        
+
         pushAll(temp->right);
-        
-        return temp->val;      
+
+        return temp->val;
     }
-    
-    bool hasNext() 
+
+    bool hasNext()
     {
-        return !s.empty();    
+        return !s.empty();
     }
 };
 
@@ -50,5 +50,5 @@ public:
  * int param_1 = obj->next();
  * bool param_2 = obj->hasNext();
  */
- 
- // https://leetcode.com/problems/binary-search-tree-iterator/submissions/
+
+// https://leetcode.com/problems/binary-search-tree-iterator/
