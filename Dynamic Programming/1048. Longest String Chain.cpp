@@ -34,4 +34,4 @@ public:
     }
 };
 
-// https://leetcode.com/problems/longest-string-chain/submissions/
+// https://leetcode.com/problems/longest-string-chain/
