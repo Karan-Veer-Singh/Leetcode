@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int findKthLargest(vector<int>& A, int k) 
+    int findKthLargest(vector<int>& A, int k)
     {
         priority_queue<int, vector<int>, greater<int>> pq;
 
@@ -16,9 +16,9 @@ public:
                 pq.push(A[i]);
             }
         }
-        
+
         return pq.top();
     }
 };
 
-// https://leetcode.com/problems/kth-largest-element-in-an-array/submissions/
+// https://leetcode.com/problems/kth-largest-element-in-an-array/
