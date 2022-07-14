@@ -10,9 +10,33 @@
  * };
  */
 class Solution {
+private:
+    TreeNode* build(vector<int> &preorder, vector<int> &inorder, int s, int e, int &i, unordered_map<int, int> &mp) {
+        if (s > e)   return NULL;
+
+        TreeNode *root = new TreeNode(preorder[i++]);
+        int inIndex = mp[root->val];
+
+        root->left = build(preorder, inorder, s, inIndex - 1, i, mp);
+        root->right = build(preorder, inorder, inIndex + 1, e, i, mp);
+
+        return root;
+    }
+
+public:
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        unordered_map<int, int> mp;
+        for (int i = 0; i < inorder.size(); i++) mp[inorder[i]] = i;
+        int i = 0;
+        return build(preorder, inorder, 0, inorder.size() - 1, i, mp);
+    }
+};
+
+----------------------------------------------------------------------------------------
+class Solution {
 public:
     TreeNode* build(vector<int> &preOrder, int preStart, int preEnd, vector<int> &inOrder,
-                int inStart, int inEnd, unordered_map<int, int> &mp)
+                    int inStart, int inEnd, unordered_map<int, int> &mp)
     {
         if (preStart > preEnd || inStart > inEnd)
             return NULL;
@@ -30,8 +54,8 @@ public:
 
         return root;
     }
-    
-    TreeNode* buildTree(vector<int>& preOrder, vector<int>& inOrder) 
+
+    TreeNode* buildTree(vector<int>& preOrder, vector<int>& inOrder)
     {
         unordered_map<int, int> mp;
 
@@ -40,8 +64,8 @@ public:
 
         TreeNode *root = build(preOrder, 0, preOrder.size() - 1, inOrder, 0, inOrder.size() - 1, mp);
 
-        return root;    
+        return root;
     }
 };
 
-// https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/submissions/
+// https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
