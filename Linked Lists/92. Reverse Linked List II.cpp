@@ -15,7 +15,7 @@ public:
         ListNode *prev = NULL;
         ListNode *nextNode;
 
-        while(count--)
+        while (count--)
         {
             nextNode = curr->next;
             curr->next = prev;
@@ -25,33 +25,33 @@ public:
 
         return {prev, nextNode};
     }
-    
-    ListNode* reverseBetween(ListNode* head, int m, int n) 
+
+    ListNode* reverseBetween(ListNode* head, int m, int n)
     {
-        if(head == NULL || head->next == NULL || m == n)
-        return head;
+        if (head == NULL || head->next == NULL || m == n)
+            return head;
 
         ListNode *beforeStart = NULL;
         ListNode *start = head;
 
-        for(int i = 1; i < m; i++)
+        for (int i = 1; i < m; i++)
         {
             beforeStart = start;
             start = start->next;
         }
 
-        pair<ListNode*, ListNode*> p = reverse(start, n-m+1);
+        pair<ListNode*, ListNode*> p = reverse(start, n - m + 1);
         ListNode *end = p.first;
         ListNode *beforeEnd = p.second;
 
-        if(beforeStart != NULL)
+        if (beforeStart != NULL)
             beforeStart->next = end;
         else
             head = end;
 
         start->next = beforeEnd;
-        return head;    
+        return head;
     }
 };
 
-// https://leetcode.com/problems/reverse-linked-list-ii/submissions/
+// https://leetcode.com/problems/reverse-linked-list-ii/
