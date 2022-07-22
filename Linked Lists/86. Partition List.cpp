@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    ListNode* partition(ListNode* head, int x) 
+    ListNode* partition(ListNode* head, int x)
     {
         ListNode *smallHead = new ListNode(0);
         ListNode *largeHead = new ListNode(0);
@@ -21,9 +21,9 @@ public:
         ListNode *small = smallHead;
         ListNode *large = largeHead;
 
-        while(head)
+        while (head)
         {
-            if(head->val < x)
+            if (head->val < x)
             {
                 small->next = head;
                 small = small->next;
@@ -39,9 +39,9 @@ public:
         small->next = largeHead->next;
         large->next = NULL;
 
-        return smallHead->next;  
-        
+        return smallHead->next;
+
     }
 };
 
-// https://leetcode.com/problems/partition-list/submissions/
+// https://leetcode.com/problems/partition-list/
