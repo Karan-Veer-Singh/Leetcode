@@ -1,4 +1,5 @@
 class Solution {
+private:
     int solve(vector<int> &nums, int target, vector<int> &dp) {
         if (dp[target] != -1)    return dp[target];
         int res = 0;
