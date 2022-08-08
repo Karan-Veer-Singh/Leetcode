@@ -16,7 +16,7 @@ public:
     }
 };
 
-TC - O(N ^ 2);
+TC - O(N ^ 2)
 ----------------------------------------------------------------
 
 class Solution {
@@ -38,6 +38,6 @@ public:
     }
 };
 
-TC - O(NlogN);
+TC - O(NlogN)
 
 // https://leetcode.com/problems/longest-increasing-subsequence/
