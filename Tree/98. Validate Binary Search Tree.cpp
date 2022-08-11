@@ -11,20 +11,20 @@
  */
 class Solution {
 public:
-    
-    bool Valid(TreeNode *root, long long mn, long long mx){
-        if(root == NULL)    return true;
-        
-        if( (root->val > mn) && (root->val < mx) && Valid(root->left, mn, root->val) && 
-             Valid(root->right, root->val, mx))
+
+    bool Valid(TreeNode *root, long long mn, long long mx) {
+        if (root == NULL)    return true;
+
+        if ( (root->val > mn) && (root->val < mx) && Valid(root->left, mn, root->val) &&
+                Valid(root->right, root->val, mx))
             return true;
-        
+
         return false;
     }
-    
+
     bool isValidBST(TreeNode* root) {
         return Valid(root, LONG_MIN, LONG_MAX);
     }
 };
 
-// https://leetcode.com/problems/validate-binary-search-tree/submissions/
+// https://leetcode.com/problems/validate-binary-search-tree/
