@@ -10,21 +10,20 @@
 
 class Solution {
 public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) 
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
     {
-        if(root == NULL)
-            return NULL;
-        
+        if (root == NULL)    return NULL;
+
         int curr = root->val;
-        
-        if(p->val < curr && q->val < curr)
+
+        if (p->val < curr && q->val < curr)
             return lowestCommonAncestor(root->left, p, q);
-        
-        if(p->val > curr && q->val > curr)
+
+        if (p->val > curr && q->val > curr)
             return lowestCommonAncestor(root->right, p, q);
-        
+
         return root;
     }
 };
 
-// https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/submissions/
+// https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
