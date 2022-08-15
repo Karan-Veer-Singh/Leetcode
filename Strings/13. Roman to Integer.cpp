@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int romanToInt(string A) 
+    int romanToInt(string A)
     {
         map<char, int> roman;
         roman['I'] = 1;
@@ -14,10 +14,10 @@ public:
         int n = A.length();
         int ans;
 
-        ans = roman[A[n-1]];
-    
-        for(int i = n-2; i >= 0; i--)
-            if(roman[A[i]] < roman[A[i+1]])
+        ans = roman[A[n - 1]];
+
+        for (int i = n - 2; i >= 0; i--)
+            if (roman[A[i]] < roman[A[i + 1]])
                 ans -= roman[A[i]];
             else
                 ans += roman[A[i]];
@@ -26,4 +26,4 @@ public:
     }
 };
 
-// https://leetcode.com/problems/roman-to-integer/submissions/
+// https://leetcode.com/problems/roman-to-integer/
