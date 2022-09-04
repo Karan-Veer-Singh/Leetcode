@@ -11,12 +11,12 @@
  */
 class Solution {
 public:
-    vector<vector<int>> verticalTraversal(TreeNode* root) 
+    vector<vector<int>> verticalTraversal(TreeNode* root)
     {
         vector<vector<int>> ans;
 
-        if(root == NULL)    return ans;
-        
+        if (root == NULL)    return ans;
+
         map<int, map<int, multiset<int>>> m;
         queue<pair<TreeNode*, pair<int, int>>> q;
 
@@ -26,7 +26,7 @@ public:
         pair<TreeNode*, pair<int, int>> temp;
         TreeNode* node;
 
-        while(!q.empty())
+        while (!q.empty())
         {
             temp = q.front();
             q.pop();
@@ -37,17 +37,17 @@ public:
 
             m[dist][level].insert(node->val);
 
-            if(node->left)
-                q.push({node->left, {dist-1, level+1}});
-            
-            if(node->right)
-                q.push({node->right, {dist+1, level+1}});
+            if (node->left)
+                q.push({node->left, {dist - 1, level + 1}});
+
+            if (node->right)
+                q.push({node->right, {dist + 1, level + 1}});
         }
 
-        for(auto p : m)
+        for (auto p : m)
         {
             vector<int> col;
-            for(auto q : p.second)
+            for (auto q : p.second)
             {
                 col.insert(col.end(), q.second.begin(), q.second.end());
             }
@@ -59,4 +59,4 @@ public:
     }
 };
 
-// https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/submissions/
+// https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
