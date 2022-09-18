@@ -1,38 +1,38 @@
 class Solution {
 public:
-    int trap(vector<int>& height) 
+    int trap(vector<int>& height)
     {
         int n = height.size();
         int left = 0;
-        int right = n-1;
+        int right = n - 1;
         int leftMax = 0;
         int rightMax = 0;
         int res = 0;
-        
-        while(left <= right)
+
+        while (left <= right)
         {
-            if(height[left] <= height[right])
+            if (height[left] <= height[right])
             {
-                if(height[left] >= leftMax)
+                if (height[left] >= leftMax)
                     leftMax = height[left];
                 else
                     res += leftMax - height[left];
-                
+
                 left++;
             }
             else
             {
-                if(height[right] >= rightMax)
+                if (height[right] >= rightMax)
                     rightMax = height[right];
                 else
                     res += rightMax - height[right];
-                
+
                 right--;
             }
         }
-        
+
         return res;
     }
 };
 
-// https://leetcode.com/problems/trapping-rain-water/submissions/
+// https://leetcode.com/problems/trapping-rain-water/
