@@ -1,6 +1,7 @@
 class MyCircularQueue {
 private:
     int *queue, front, rear, capacity;
+
 public:
     MyCircularQueue(int k) {
         queue = new int[k];
@@ -54,4 +55,4 @@ public:
  * bool param_6 = obj->isFull();
  */
 
-// https://leetcode.com/problems/design-circular-queue/submissions/
+// https://leetcode.com/problems/design-circular-queue/
