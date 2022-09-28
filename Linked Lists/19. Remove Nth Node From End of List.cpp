@@ -11,26 +11,50 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        
+
         ListNode *slow = head;
         ListNode *fast = head;
-        
-        for(int i = 1; i <= n; i++)
+
+        for (int i = 1; i <= n; i++)
             fast = fast -> next;
-        
-        if(fast == NULL)           // edge case, to remove first element.
+
+        if (fast == NULL)          // edge case, to remove first element.
             return head -> next;
-        
-        while(fast -> next)
+
+        while (fast -> next)
         {
             fast = fast -> next;
             slow = slow -> next;
         }
-        
+
         slow -> next = slow -> next -> next;
-        
+
         return head;
-        
+
+    }
+};
+
+------------------------------------------------------------------------------------
+// Using Dummy Node
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode *dummy = new ListNode(0);
+        dummy->next = head;
+        ListNode *slow = dummy;
+        ListNode *fast = dummy;
+
+        for (int i = 1; i <= n; i++)
+            fast = fast->next;
+
+        while (fast->next != NULL) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+
+        slow->next = slow->next->next;
+        return dummy->next;
     }
 };
 
