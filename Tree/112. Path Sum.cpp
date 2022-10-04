@@ -11,15 +11,15 @@
  */
 class Solution {
 public:
-    bool hasPathSum(TreeNode* root, int targetSum) 
+    bool hasPathSum(TreeNode* root, int targetSum)
     {
-        if(root == NULL)    return false;
-        
-        if(root->left == NULL && root->right == NULL)
-            return (targetSum-root->val) == 0;
-        
-        return (hasPathSum(root->left, targetSum-root->val) || hasPathSum(root->right, targetSum-root->val));
+        if (root == NULL)    return false;
+
+        if (root->left == NULL && root->right == NULL)
+            return (targetSum - root->val) == 0;
+
+        return (hasPathSum(root->left, targetSum - root->val) || hasPathSum(root->right, targetSum - root->val));
     }
 };
 
-// https://leetcode.com/problems/path-sum/submissions/
+// https://leetcode.com/problems/path-sum/
