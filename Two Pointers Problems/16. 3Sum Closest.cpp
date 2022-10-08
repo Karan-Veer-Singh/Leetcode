@@ -10,11 +10,14 @@ public:
 
             while (low < high) {
                 int val = nums[i] + nums[low] + nums[high];
+
                 if (val == target) return target;
+
                 if (abs(target - val) < diff) {
                     diff = abs(target - val);
                     res = val;
                 }
+
                 if (val < target) low++;
 
                 else    high--;
