@@ -49,35 +49,63 @@ public:
 		return !s.empty();
 	}
 };
-    
+
 class Solution {
 public:
-    bool findTarget(TreeNode* root, int k) 
-    {
-        if (root == NULL)	return 0;
+	bool findTarget(TreeNode* root, int k)
+	{
+		if (root == NULL)	return 0;
 
-        BSTIterator l(root, false);
-        BSTIterator r(root, true);
+		BSTIterator l(root, false);
+		BSTIterator r(root, true);
 
-        int i = l.next();
-        int j = r.next();
+		int i = l.next();
+		int j = r.next();
 
-        while (i < j)
-        {
-            int sum = i + j;
+		while (i < j)
+		{
+			int sum = i + j;
 
-            if (sum == k)
-                return 1;
+			if (sum == k)
+				return 1;
 
-            else if (sum < k)
-                i = l.next();
+			else if (sum < k)
+				i = l.next();
 
-            else
-                j = r.next();
-        }
+			else
+				j = r.next();
+		}
 
-        return 0;    
-    }
+		return 0;
+	}
 };
 
-// https://leetcode.com/problems/two-sum-iv-input-is-a-bst/submissions/
+------------------------------------------------------------------------------------------------
+class Solution {
+private:
+	vector<int> ans;
+
+	void inorder(TreeNode* &root) {
+		if (!root) return;
+		inorder(root->left);
+		ans.push_back(root->val);
+		inorder(root->right);
+	}
+
+public:
+	bool findTarget(TreeNode* root, int target) {
+		inorder(root);
+
+		int start = 0, end = ans.size() - 1;
+
+		while (start < end) {
+			if (ans[start] + ans[end] == target)   return true;
+			else if (ans[start] + ans[end] < target)  start++;
+			else  end--;
+		}
+
+		return false;
+	}
+};
+
+// https://leetcode.com/problems/two-sum-iv-input-is-a-bst/
