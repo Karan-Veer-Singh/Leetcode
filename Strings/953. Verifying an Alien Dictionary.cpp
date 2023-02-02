@@ -21,4 +21,4 @@ public:
     }
 };
 
-// https://leetcode.com/problems/verifying-an-alien-dictionary/submissions/
+// https://leetcode.com/problems/verifying-an-alien-dictionary/
