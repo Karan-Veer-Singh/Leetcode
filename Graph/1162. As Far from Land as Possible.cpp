@@ -39,4 +39,4 @@ public:
     }
 };
 
-// https://leetcode.com/problems/as-far-from-land-as-possible/submissions/
+// https://leetcode.com/problems/as-far-from-land-as-possible/
