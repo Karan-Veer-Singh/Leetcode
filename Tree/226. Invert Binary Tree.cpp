@@ -11,16 +11,16 @@
  */
 class Solution {
 public:
-    TreeNode* invertTree(TreeNode* root) 
+    TreeNode* invertTree(TreeNode* root)
     {
-        if(root == NULL)
+        if (root == NULL)
             return NULL;
-        
+
         invertTree(root -> left);
         invertTree(root -> right);
-        
+
         swap(root -> left, root -> right);
-        
+
         return root;
     }
 };
@@ -40,31 +40,31 @@ public:
  */
 class Solution {
 public:
-    TreeNode* invertTree(TreeNode* root) 
+    TreeNode* invertTree(TreeNode* root)
     {
-        if(root == NULL)
+        if (root == NULL)
             return NULL;
-        
+
         queue<TreeNode*> q;
         q.push(root);
-        
+
         TreeNode *f;
-        while(!q.empty())
+        while (!q.empty())
         {
             f = q.front();
             q.pop();
-            
+
             swap(f->left, f->right);
-            
-            if(f->left)
+
+            if (f->left)
                 q.push(f->left);
-            
-            if(f->right)
+
+            if (f->right)
                 q.push(f->right);
         }
-        
+
         return root;
     }
 };
 
-// https://leetcode.com/problems/invert-binary-tree/submissions/
+// https://leetcode.com/problems/invert-binary-tree/
