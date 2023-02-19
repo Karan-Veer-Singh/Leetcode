@@ -11,42 +11,36 @@
  */
 class Solution {
 public:
-    vector<vector<int>> zigzagLevelOrder(TreeNode* root) 
-    {
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
         vector<vector<int>> ans;
-
-        if (root == NULL)
-            return ans;
+        if (root == NULL)   return ans;
 
         queue<TreeNode*> nodesQueue;
         nodesQueue.push(root);
+
         bool leftToRight = true;
 
-        while (!nodesQueue.empty())
-        {
+        while (!nodesQueue.empty()) {
             int size = nodesQueue.size();
-            vector<int> level(size);
-            TreeNode *temp;
+            vector<int> level(size, 0);
 
-            for (int i = 0; i < size; i++)
-            {
-                temp = nodesQueue.front();
+            for (int i = 0; i < size; i++) {
+                TreeNode *f = nodesQueue.front();
                 nodesQueue.pop();
 
-                int index = (leftToRight == true) ? i : size - i - 1;
+                int indx = (leftToRight) ? i : size - i - 1;
+                level[indx] = f->val;
 
-                level[index] = temp -> val;
-
-                if (temp -> left)	nodesQueue.push(temp -> left);
-                if (temp -> right)	nodesQueue.push(temp -> right);
+                if (f->left != NULL)     nodesQueue.push(f->left);
+                if (f->right != NULL)    nodesQueue.push(f->right);
             }
 
             leftToRight = !leftToRight;
             ans.push_back(level);
         }
 
-        return ans;    
+        return ans;
     }
 };
 
-// https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/submissions/
+// https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
