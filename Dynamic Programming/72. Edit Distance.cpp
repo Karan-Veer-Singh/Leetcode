@@ -29,9 +29,9 @@ public:
         int n = word1.size();
         int m = word2.size();
 
-        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1, -1));
 
-
+        return solve(n, m, word1, word2, dp);
     }
 };
 
@@ -40,30 +40,25 @@ public:
 
 class Solution {
 public:
-    int minDistance(string A, string B)
-    {
+    int minDistance(string A, string B) {
         int n = A.size();
         int m = B.size();
 
         int dp[2][m + 1];
 
-        for (int i = 0; i <= n; i++)
-        {
-            for (int j = 0; j <= m; j++)
-            {
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= m; j++) {
                 if (i == 0)
                     dp[i % 2][j] = j;
 
                 else if (j == 0)
                     dp[i % 2][j] = i;
 
-                else
-                {
+                else {
                     if (A[i - 1] == B[j - 1])
                         dp[i % 2][j] = dp[(i - 1) % 2][j - 1];
 
-                    else
-                    {
+                    else {
                         int replace = dp[(i - 1) % 2][j - 1];
                         int del = dp[(i - 1) % 2][j];
                         int insert = dp[i % 2][j - 1];
@@ -78,4 +73,4 @@ public:
     }
 };
 
-// https://leetcode.com/problems/edit-distance/submissions/
+// https://leetcode.com/problems/edit-distance/
