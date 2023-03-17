@@ -1,5 +1,3 @@
-// https://leetcode.com/problems/implement-trie-prefix-tree/
-
 struct Node {
 public:
     Node *links[26];
@@ -75,3 +73,5 @@ public:
  * bool param_2 = obj->search(word);
  * bool param_3 = obj->startsWith(prefix);
  */
+
+// https://leetcode.com/problems/implement-trie-prefix-tree/
