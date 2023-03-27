@@ -1,30 +1,28 @@
 // Memoization
 
 class Solution {
-public:
-    int calcSum(int i, int j, vector<vector<int>>& grid, vector<vector<int>> &dp)
-    {
-        if (i == 0 && j == 0)    return grid[i][j];
-        if (i < 0 || j < 0)      return 1e9;
+private:
+    int minSum(int row, int col, vector<vector<int>> &grid, vector<vector<int>> &dp) {
+        if (row < 0 || col < 0)  return 1e8;
+        if (row == 0 && col == 0)    return grid[row][col];
 
-        if (dp[i][j] != -1)      return dp[i][j];
+        if (dp[row][col] != -1)  return dp[row][col];
 
-        int up = grid[i][j] + calcSum(i - 1, j, grid, dp);
-        int left = grid[i][j] + calcSum(i, j - 1, grid, dp);
+        int up = grid[row][col] + minSum(row - 1, col, grid, dp);
+        int left = grid[row][col] + minSum(row, col - 1, grid, dp);
 
-        return dp[i][j] = min(up, left);
+        return dp[row][col] = min(up, left);
     }
 
-    int minPathSum(vector<vector<int>>& grid)
-    {
-        int m = grid.size();
-        int n = grid[0].size();
-
+public:
+    int minPathSum(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
         vector<vector<int>> dp(m, vector<int>(n, -1));
-
-        return calcSum(m - 1, n - 1, grid, dp);
+        return minSum(m - 1, n - 1, grid, dp);
     }
 };
+
+
 
 // TC -> O(M*N)
 // SC -> O(M*N) + Recursion Stack Space
