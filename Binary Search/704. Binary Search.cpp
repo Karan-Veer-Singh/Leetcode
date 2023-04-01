@@ -13,4 +13,4 @@ public:
   }
 };
 
-// https://leetcode.com/problems/binary-search/submissions/
+// https://leetcode.com/problems/binary-search/
