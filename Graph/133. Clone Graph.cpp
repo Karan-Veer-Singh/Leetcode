@@ -21,28 +21,28 @@ public:
 
 class Solution {
 public:
-    Node* cloneGraph(Node* node) 
+    Node* cloneGraph(Node* node)
     {
-        if(node == NULL)
+        if (node == NULL)
             return node;
-        
+
         unordered_map<Node*, Node*> m;
         queue<Node*> q;
-        
+
         Node *copyNode = new Node(node->val);
-        
+
         m[node] = copyNode;
         q.push(node);
 
         Node *temp = nullptr;
-        while(!q.empty())
+        while (!q.empty())
         {
             temp = q.front();
             q.pop();
 
-            for(auto ngbr: temp->neighbors)
+            for (auto ngbr : temp->neighbors)
             {
-                if(m.find(ngbr) == m.end())
+                if (m.find(ngbr) == m.end())
                 {
                     m[ngbr] = new Node(ngbr->val);
                     q.push(ngbr);
@@ -52,8 +52,8 @@ public:
             }
         }
 
-        return m[node];           
+        return m[node];
     }
 };
 
-// https://leetcode.com/problems/clone-graph/submissions/
+// https://leetcode.com/problems/clone-graph/
