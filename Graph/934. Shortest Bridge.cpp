@@ -62,4 +62,4 @@ public:
 };
 
 
-// https://leetcode.com/problems/shortest-bridge/submissions/
+// https://leetcode.com/problems/shortest-bridge/
