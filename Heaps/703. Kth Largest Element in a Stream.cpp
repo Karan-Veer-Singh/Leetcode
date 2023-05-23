@@ -26,4 +26,4 @@ public:
  * int param_1 = obj->add(val);
  */
 
-// https://leetcode.com/problems/kth-largest-element-in-a-stream/submissions/
+// https://leetcode.com/problems/kth-largest-element-in-a-stream/
