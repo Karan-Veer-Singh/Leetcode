@@ -55,4 +55,4 @@ public:
     }
 };
 
-// https://leetcode.com/problems/minimum-cost-to-cut-a-stick/submissions/
+// https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
